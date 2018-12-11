@@ -1,1 +1,2 @@
-var app = angular.module('smsXpress', []);
+
+angular.module('smsXpress', [])
