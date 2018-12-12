@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/', express.static('../frontend/'));
 
 app.get('/', function(req, res){
-    res.sendFile('index.html', { root: '../frontend/' });
+    res.sendFile('index.html');
 });
 
 app.listen(PORT, function(){

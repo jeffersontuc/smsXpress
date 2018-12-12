@@ -1,23 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <base href="/">
     <meta charset="UTF-8">
     <title>smsXpress</title>
+
+    <link rel="stylesheet" href="node_modules/angular-material/angular-material.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet">
+
+    <link rel="apple-touch-icon" href="app/public/images/apple-touch-icon.png">
+    <link rel="shortcut icon" type="image/ico" href="app/public/images/favicon.ico" />
+    <!-- Plugin-CSS -->
+    <link rel="stylesheet" href="app/public/css/bootstrap.min.css">
+    <link rel="stylesheet" href="app/public/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="app/public/css/themify-icons.css">
+    <link rel="stylesheet" href="app/public/css/magnific-popup.css">
+    <link rel="stylesheet" href="app/public/css/animate.css">
+    <!-- Main-Stylesheets -->
+    <link rel="stylesheet" href="app/public/css/normalize.css">
+    <link rel="stylesheet" href="app/public/style.css">
+    <link rel="stylesheet" href="app/public/css/responsive.css">
+    <script src="app/public/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
 <body ng-app="smsXpress">
 
-
-{{2 + 2}}
-
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.4/angular.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.4/angular-route.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.4/angular-sanitize.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.4/angular-animate.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.4/angular-aria.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.1.0/angular-material.js"></script>
+<script src="node_modules/angular/angular.min.js"></script>
+<script src="node_modules/@uirouter/angularjs/release/angular-ui-router.min.js"></script>
+<script src="node_modules/angular-aria/angular-aria.js"></script>
+<script src="node_modules/angular-animate/angular-animate.js"></script>
+<script src="node_modules/angular-messages/angular-messages.js"></script>
+<script src="node_modules/angular-material/angular-material.js"></script>
 
 <script src="app/app.js"></script>
+
+
+<script src="app/components/sobre/sobre-controller.js"></script>
+<script src="app/components/sms/sms-controller.js"></script>
+<script src="app/components/home/home-controller.js"></script>
+
+
+    <ui-view></ui-view>
+</html>
 
 </body>
 </html>
