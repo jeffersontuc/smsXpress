@@ -1,0 +1,55 @@
+<br>
+<br>
+<section ng-if="vm.currentStage === 'collectData'" style="padding-left: 10%; padding-right: 5%; padding-top: 10%">
+
+    <h2>Para que sua mensagem seja enviada, digite os números de telefone e a mensagem desejada logo abaixo. ;)</h2>
+    <h2>{{vm.title}}</h2>
+
+    <br>
+
+    <div>
+        <label><h2>Telefones</h2></label>
+        <md-chips style="background-color: gray; font-size: 30px;" md-separator-keys="vm.customKeys" ng-model="vm.phones" placeholder="Ex: 83999715570">
+        </md-chips>
+    </div>
+
+    <br>
+    <div class="form-group">
+        <label><h2>Mensagem</h2></label>
+        <textarea type="text" ng-model="vm.message" class="form-control" placeholder="Digite sua mensagem"></textarea>
+    </div>
+
+    <a style="float: right" href="#" class="button" ng-click="vm.goTo('payment')">Continuar</a>
+</section>
+
+
+<section ng-if="vm.currentStage === 'payment'" style="padding-left: 10%; padding-right: 5%; padding-top: 5%">
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-4" style="align-items: flex-start">
+            <img src="app/public/images/shopping-14-512.png">
+            <h2>Total: {{vm.totalCost | currency:'R$'}}</h2>
+
+        </div>
+
+        <div class="col-xs-12 col-sm-6" style="padding-left: 5%">
+            <h3 style="float: right">{{vm.message ? '"' + vm.message + '"': ''}}</h3>
+        </div>
+    </div>
+
+    <a style="float: right" href="#" class="button" ng-click="vm.goTo('confirmed')">Confirmar Envio</a>
+    <a style="float: right" href="#" class="button" ng-click="vm.goTo('collectData')">Voltar</a>
+
+</section>
+
+
+<section ng-if="vm.currentStage === 'confirmed'" style="padding-left: 10%; padding-right: 5%; padding-top: 5%">
+    <h1>Parabéns! Seu SMS foi enviado com sucesso.
+    </h1>
+    <h1>Esse é seu protocolo: XXXX-YYYY-ZZZZ</h1>
+
+    <br>
+    <br>
+
+    <a style="align-content: center" href="#" class="button" ng-click="vm.goTo('collectData')">Voltar</a>
+</section>
