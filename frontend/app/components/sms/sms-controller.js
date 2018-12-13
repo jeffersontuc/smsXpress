@@ -23,7 +23,6 @@ app.controller('smsController', function ($mdConstant, $window, smsService) {
 
         if(stage === 'collectData'){
             vm.protocol = undefined;
-            console.log(vm.protocol);
         }
     };
 
