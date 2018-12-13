@@ -2,6 +2,7 @@
     const express = require('express');
     const app = express();
     const bodyParser = require('body-parser');
+    const path = require("path");
 
     const routes = require('./routes/index.js');
 
@@ -12,12 +13,16 @@
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({ extended: true }));
 
-    app.use('/', express.static('/home/jefferson/workspace/smsXpress/frontend/'));
+    app.use(express.static(path.join(__dirname, '/../frontend')));
 
     app.use('/api', routes);
 
     app.get('/', function(req, res){
         res.sendFile('/home/jefferson/workspace/smsXpress/frontend/index.html');
+    });
+
+    app.get('*', (req, res) => {
+        res.sendFile(path.join(__dirname + '/../frontend/index.html'));
     });
 
     app.listen(PORT, function(){
