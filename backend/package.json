@@ -9,13 +9,13 @@
   "author": "Jefferson Benedito",
   "license": "ISC",
   "dependencies": {
-    "crypto": "^1.0.1",
     "express": "^4.16.4",
     "html": "^1.0.0",
     "mongoose": "^5.3.16",
     "nanoid": "^2.0.0",
-    "shortid": "^2.2.14",
     "twilio": "^3.25.0",
-    "uniqid": "^5.0.3"
+  },
+  "engines": {
+    "node": "10.x"
   }
 }
