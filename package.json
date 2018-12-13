@@ -16,5 +16,9 @@
   "bugs": {
     "url": "https://github.com/jeffersontuc/smsXpress/issues"
   },
-  "homepage": "https://github.com/jeffersontuc/smsXpress#readme"
+  "homepage": "https://github.com/jeffersontuc/smsXpress#readme",
+  "engines": {
+    "node": "10.x"
+  }
+
 }
