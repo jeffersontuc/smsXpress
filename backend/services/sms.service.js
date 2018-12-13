@@ -1,6 +1,13 @@
 (function () {
+    var twilio = require('twilio');
+    var twilioConfig = require('../config/twilio/config.js');
+
+    var accountSid = twilioConfig.accountSid;
+    var authToken = twilioConfig.authToken;
+    var client = new twilio(accountSid, authToken);
 
     var smsModel = require('../db/models/sms.js');
+
 
     var smsService = function () {
         var Sms = {};
@@ -8,20 +15,28 @@
 
         Sms.create = function (req, res) {
 
-            var newSms = new smsModel(req.body);
+            client.messages
+                .create({from: '+15125483808', body: req.body.message, to: req.body.phones})
+                .then(function (message) {
+                    var sms = req.body;
+                    sms.sid = message.sid;
 
-            newSms.save(req.body, function (err, sms) {
-                if(err){
-                    res.json(err);
-                }
+                    var newSms = new smsModel(sms);
 
-                res.json(sms);
-            })
+                    newSms.save(function (err, sms) {
+                        if(err){
+                            res.json(err);
+                        }
+
+                        res.json(sms);
+                    })
+                })
+                .done();
         };
 
 
         Sms.get = function (req, res) {
-            smsModel.findOne(req.query, function (err, sms) {
+            smsModel.find(req.query, function (err, sms) {
                 if(err){
                     res.json(err);
                 }
@@ -33,6 +48,10 @@
 
 
         return Sms;
+    };
+
+    function sendSms(message, phones){
+
     };
 
 
