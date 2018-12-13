@@ -13,8 +13,8 @@ For this project, I used the following tools:
 
 In order to run the project you need to:
 
-cd /frontend
-npm i
-cd ../backend
-npm i
-node (or nodemon) index.js
+*cd /frontend
+*npm i
+*cd ../backend
+*npm i
+*node (or nodemon) index.js
