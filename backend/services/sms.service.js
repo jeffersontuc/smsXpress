@@ -16,7 +16,7 @@
         Sms.create = function (req, res) {
 
             client.messages
-                .create({from: '+15125483808', body: req.body.message, to: req.body.phones})
+                .create({from: twilioConfig.fromNumber, body: req.body.message, to: req.body.phones})
                 .then(function (message) {
                     var sms = req.body;
                     sms.sid = message.sid;
