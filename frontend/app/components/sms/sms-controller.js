@@ -1,4 +1,4 @@
-app.controller('smsController', function ($mdConstant) {
+app.controller('smsController', function ($mdConstant, smsService) {
     var vm = this;
     var phonePrice = 0.10;
     var caracPrice = 0.05;
@@ -23,6 +23,24 @@ app.controller('smsController', function ($mdConstant) {
     };
 
 
+    vm.sendSms = function () {
+        var sms = {};
+        sms.message = vm.message;
+        sms.phones = vm.phones;
+
+        function success(response){
+            vm.protocol = formatProtocol(response.data.protocol);
+            vm.goTo('confirmed');
+        };
+
+        function error(err){
+            console.log(error);
+        };
+
+        smsService.sendSms(sms).then(success, error);
+    };
+
+
     function calculateCost() {
         var messageWithoutBlank = vm.message.trim();
         var messageWords = messageWithoutBlank.split(' ');
@@ -41,6 +59,13 @@ app.controller('smsController', function ($mdConstant) {
         }
 
         return total;
+    };
+
+
+    function formatProtocol(protocol) {
+        var newProtocol = protocol.substring(0, 4) + '-' + protocol.substring(4, 8) + '-' + protocol.substring(8, 12);
+
+        return newProtocol;
     };
 
 });

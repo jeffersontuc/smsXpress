@@ -37,7 +37,7 @@
         </div>
     </div>
 
-    <a style="float: right" href="#" class="button" ng-click="vm.goTo('confirmed')">Confirmar Envio</a>
+    <a style="float: right" href="#" class="button" ng-click="vm.sendSms()">Confirmar Envio</a>
     <a style="float: right" href="#" class="button" ng-click="vm.goTo('collectData')">Voltar</a>
 
 </section>
@@ -46,7 +46,7 @@
 <section ng-if="vm.currentStage === 'confirmed'" style="padding-left: 10%; padding-right: 5%; padding-top: 5%">
     <h1>Parabéns! Seu SMS foi enviado com sucesso.
     </h1>
-    <h1>Esse é seu protocolo: XXXX-YYYY-ZZZZ</h1>
+    <h1>Esse é seu protocolo: {{vm.protocol}}</h1>
 
     <br>
     <br>
