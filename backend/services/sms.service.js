@@ -17,17 +17,22 @@
 
             client.messages
                 .create({from: twilioConfig.fromNumber, body: req.body.message, to: req.body.phones})
-                .then(message => req.body.sid = message.sid)
-                .done(function () {
-                    var newSms = new smsModel(req.body);
+                .then()
+                .catch(function (error) {
+                    res.sendStatus(400);
+                })
+                .done(function (sid) {
+                    if(sid){
+                        var newSms = new smsModel(req.body);
 
-                    newSms.save(function (err, sms) {
-                        if(err){
-                            res.json(err);
-                        }
+                        newSms.save(function (err, sms) {
+                            if(err){
+                                res.json(err);
+                            }
 
-                        res.json(sms);
-                    })
+                            res.json(sms);
+                        })
+                    }
                 });
         };
 

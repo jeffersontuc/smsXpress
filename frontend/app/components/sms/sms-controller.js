@@ -44,7 +44,8 @@ app.controller('smsController', function ($mdConstant, $window, smsService) {
         };
 
         function error(err){
-            console.log(error);
+            vm.error = 'Número não verificado.';
+            vm.goTo('confirmed');
         };
 
         smsService.sendSms(sms).then(success, error);

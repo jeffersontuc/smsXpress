@@ -48,7 +48,6 @@ app.controller('homeController', function ($window, $location, $anchorScroll, $m
             $scope.gettingSms = true;
 
             function success(response){
-                console.log(response);
                 $scope.sms = response.data;
                 $scope.gotSmsData = true;
                 $scope.notFoundSms = false;
