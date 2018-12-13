@@ -17,11 +17,9 @@
 
             client.messages
                 .create({from: twilioConfig.fromNumber, body: req.body.message, to: req.body.phones})
-                .then(function (message) {
-                    var sms = req.body;
-                    sms.sid = message.sid;
-
-                    var newSms = new smsModel(sms);
+                .then(message => req.body.sid = message.sid)
+                .done(function () {
+                    var newSms = new smsModel(req.body);
 
                     newSms.save(function (err, sms) {
                         if(err){
@@ -30,28 +28,27 @@
 
                         res.json(sms);
                     })
-                })
-                .done();
+                });
         };
 
 
         Sms.get = function (req, res) {
-            smsModel.find(req.query, function (err, sms) {
+            smsModel.findOne({protocol: req.params.protocol}, function (err, sms) {
                 if(err){
                     res.json(err);
+                }else{
+                    if(sms === null){
+                        res.sendStatus(404);
+                    }else{
+                        res.json(sms);
+                    }
                 }
-
-                res.json(sms);
             })
         };
 
 
 
         return Sms;
-    };
-
-    function sendSms(message, phones){
-
     };
 
 

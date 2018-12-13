@@ -6,7 +6,7 @@
     var smsService = require('../services/sms.service.js')();
 
 
-    router.get('/', smsService.get);
+    router.get('/:protocol', smsService.get);
 
     router.post('/', smsService.create);
 

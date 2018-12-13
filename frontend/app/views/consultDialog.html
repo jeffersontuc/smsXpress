@@ -1,0 +1,51 @@
+<md-dialog style="background-color: #F0E6EF" aria-label="Mango (Fruit)">
+    <form ng-cloak>
+<!--        <md-toolbar style="background-color: #F0E6EF">
+            <div class="md-toolbar-tools">
+                <h2>Mango (Fruit)</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="cancel()">
+                    <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>-->
+
+        <md-dialog-content>
+            <div class="md-dialog-content">
+                <input type="text" name="protocol" placeholder="Digite o seu protocolo" class="form-control" required="required" ng-model="protocol">
+            </div>
+        </md-dialog-content>
+
+
+        <md-dialog-content ng-show="gotSmsData">
+            <div class="md-dialog-content">
+                <h2>Telefones</h2>
+                <p>
+                    <md-chips style="background-color: gray; font-size: 30px;" md-separator-keys="vm.customKeys" ng-model="sms.phones" readonly="true">
+                    </md-chips>
+                </p>
+                <br>
+                <h2>Mensagem</h2>
+                <p>{{'"' + sms.message + '"'}}</p>
+            </div>
+        </md-dialog-content>
+
+        <md-dialog-content ng-show="notFoundSms">
+            <div class="md-dialog-content">
+                <p>{{text}}</p>
+            </div>
+        </md-dialog-content>
+
+
+        <md-dialog-content ng-show="gettingSms">
+            <div class="md-dialog-content" style="padding-left: 40%">
+                <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+            </div>
+        </md-dialog-content>
+
+
+        <md-dialog-actions layout="row">
+            <a style="float: right" href="#" class="button" ng-click="getSms(protocol)" ng-if="protocol.trim().length">Consultar</a>
+        </md-dialog-actions>
+    </form>
+</md-dialog>
