@@ -9,6 +9,7 @@
 
     <div>
         <label><h2>Telefones</h2></label>
+        <p>Pressione SPACE ao terminar de digitar o número!</p>
         <md-chips style="background-color: gray; font-size: 30px;" md-separator-keys="vm.customKeys" ng-model="vm.phones" placeholder="Ex: +5583999715570">
         </md-chips>
     </div>
@@ -19,7 +20,7 @@
         <textarea type="text" ng-model="vm.message" class="form-control" placeholder="Digite sua mensagem"></textarea>
     </div>
 
-    <a style="float: right" href="#" class="button" ng-click="vm.goTo('payment')">Continuar</a>
+    <a style="float: right" href="#" class="button" ng-click="vm.goTo('payment')" ng-show="vm.message.trim().length && vm.phones.length">Continuar</a>
 </section>
 
 
@@ -43,6 +44,13 @@
 </section>
 
 
+<section ng-if="vm.currentStage === 'gettingSms'">
+    <div class="centered-spinner ">
+        <md-progress-circular md-mode="indeterminate" md-diameter="120"></md-progress-circular>
+    </div>
+</section>
+
+
 <section ng-if="vm.currentStage === 'confirmed'" style="padding-left: 10%; padding-right: 5%; padding-top: 5%">
     <h1>Parabéns! Seu SMS foi enviado com sucesso.
     </h1>
@@ -51,5 +59,5 @@
     <br>
     <br>
 
-    <a style="align-content: center" href="#" class="button" ng-click="vm.goTo('collectData')">Voltar</a>
+    <a style="align-content: center" href="#" class="button" ng-click="vm.reload()">Voltar</a>
 </section>

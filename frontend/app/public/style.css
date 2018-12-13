@@ -940,6 +940,16 @@ preloader
     animation-delay: 0.9s;
 }
 
+.disabled {
+    cursor: not-allowed;
+}
+
+.centered-spinner{
+    padding-left: 50%;
+    padding-top: 20%;
+    border-color: rgba(156, 137, 184, 0.5);
+}
+
 @-webkit-keyframes sk-foldCubeAngle {
     0%,
     10% {

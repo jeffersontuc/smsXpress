@@ -1,4 +1,4 @@
-app.controller('smsController', function ($mdConstant, smsService) {
+app.controller('smsController', function ($mdConstant, $window, smsService) {
     var vm = this;
     var phonePrice = 0.10;
     var caracPrice = 0.05;
@@ -20,10 +20,20 @@ app.controller('smsController', function ($mdConstant, smsService) {
         if(stage === 'payment'){
             calculateCost();
         }
+
+        if(stage === 'collectData'){
+            vm.protocol = undefined;
+            console.log(vm.protocol);
+        }
+    };
+
+    vm.reload = function(){
+        $window.location.reload();
     };
 
 
     vm.sendSms = function () {
+        vm.goTo('gettingSms');
         var sms = {};
         sms.message = vm.message;
         sms.phones = vm.phones;
