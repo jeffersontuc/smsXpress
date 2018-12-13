@@ -17,6 +17,10 @@
         protocol: {
             type: String,
             default: generate('1234567890abcdefghijklmnopqrstuwxyzABCDEFGHIJKLMNOPQRSTUWXYZ', 12)
+        },
+
+        sid: {
+            type: String
         }
 
 
