@@ -1,6 +1,7 @@
 (function () {
     var twilio = require('twilio');
     var twilioConfig = require('../config/twilio/config.js');
+    const generate = require('nanoid/generate');
 
     var accountSid = twilioConfig.accountSid;
     var authToken = twilioConfig.authToken;
@@ -24,6 +25,8 @@
                 .done(function (sid) {
                     if(sid){
                         var newSms = new smsModel(req.body);
+                        var newProtocol = generate('1234567890abcdefghijklmnopqrstuwxyzABCDEFGHIJKLMNOPQRSTUWXYZ', 12);
+                        newSms.protocol = newProtocol;
 
                         newSms.save(function (err, sms) {
                             if(err){
