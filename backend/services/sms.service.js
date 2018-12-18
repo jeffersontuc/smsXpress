@@ -25,15 +25,13 @@
                 .done(function (sid) {
                     if(sid){
                         var newSms = new smsModel(req.body);
-                        var newProtocol = generate('1234567890abcdefghijklmnopqrstuwxyzABCDEFGHIJKLMNOPQRSTUWXYZ', 12);
-                        newSms.protocol = newProtocol;
 
                         newSms.save(function (err, sms) {
                             if(err){
                                 res.json(err);
                             }
 
-                            res.json(sms);
+                            createProtocol(res, sms);
                         })
                     }
                 });
@@ -59,6 +57,36 @@
         return Sms;
     };
 
+    function generateProtocol() {
+        return generate('1234567890abcdefghijklmnopqrstuwxyzABCDEFGHIJKLMNOPQRSTUWXYZ', 12);
+    }
+
+    function createProtocol(res, sms){
+
+        smsModel.find({}, 'protocol -_id', function (err, smsProtocols) {
+            if (err) res.json(err);
+
+            var protocol = generateProtocol();
+            while(containsProtocol(smsProtocols, protocol)){
+                protocol = generateProtocol();
+            }
+
+            smsModel.findOneAndUpdate({_id: sms._id}, {protocol: protocol}, {new: true}, function (err, newSms) {
+                if(err) res.json(err);
+
+                res.json(newSms);
+            });
+        });
+    }
+
+    function containsProtocol(sms, value){
+        for(var i = 0; i < sms.length; i++){
+            if(sms[i].protocol === value){
+                return true;
+            }
+        }
+        return false;
+    }
 
     module.exports = smsService;
 }());
