@@ -12,8 +12,7 @@ sdsdsd
 * Expresssdsdsds
 * AngularJs
 
-sdsdsd order to run the project you need to:
-
+sdsdsd
 * cd /frontend
 * npm i
 * cd ../backend
