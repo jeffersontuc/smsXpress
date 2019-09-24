@@ -12,8 +12,7 @@ For this project, I used the following tools:
 * Express
 * AngularJs
 
-sijdiwjij
-In order to run the project you need to:
+sjsjIn order to run the project you need to:
 
 * cd /frontend
 * npm i
