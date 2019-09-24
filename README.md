@@ -12,7 +12,7 @@ For this project, I used the following tools:
 * Express
 * AngularJs
 
-
+dldlldld
 In order to run the project you need to:
 
 * cd /frontend
